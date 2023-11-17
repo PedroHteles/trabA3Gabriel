@@ -12,7 +12,7 @@ import java.util.*;
 public class ClienteImplDaoImpl extends ConnectionFactory implements Dao<ClienteDto> {
     @Override
     public void create() {
-        String email = scString("Digite o email do clinte ou digite 0 para voltar ao menu:");
+        String email = scString("Digite o email do cliente ou digite 0 para voltar ao menu:");
         if (Objects.equals(email, "0")) return;
         Optional<ClienteDto> byId = this.findByEmail(email);
         try {
@@ -128,6 +128,31 @@ public class ClienteImplDaoImpl extends ConnectionFactory implements Dao<Cliente
             System.out.println(se);
             return Optional.empty();
         }
+    }
+
+
+    @Override
+    public void atualizarNomeCliente() {
+        this.get().ifPresent(e -> {
+            try {
+                String email = scString("Digite o novo nome do cliente ou digite 0 para voltar ao menu:");
+                if (email.equals("0")) return;
+
+                Connection connection = ConnectionFactory.createConnection();
+                String query = "UPDATE `a3`.`clientes` SET `nome` = ? WHERE `id` = ?";
+                PreparedStatement ps = connection.prepareStatement(query);
+                ps.setString(1, email);
+                ps.setLong(2, e.getId());
+
+
+                int i = ps.executeUpdate();
+                if (i == 0) {
+                    System.out.println("Erro ao alterar nome do cliente");
+                } else System.out.println("nome alterado com sucesso");
+            } catch (SQLException se) {
+                System.out.println(se);
+            }
+        });
     }
 
     private ClienteDto resultToObject(ResultSet resultSet) {

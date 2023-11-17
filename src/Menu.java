@@ -9,7 +9,8 @@ public class Menu {
                 "\n\n1. Listar clientes:\n"
                         + "2. Buscar cliente por email:\n"
                         + "3. criar cliente:\n"
-                        + "4. remover clinte:\n"
+                        + "4. remover cliente:\n"
+                        + "5. editar nome cliente:\n"
                         + "0. Sair:\n\n";
 
         System.out.println(menu);
@@ -26,6 +27,8 @@ public class Menu {
                         service.serviceCliente().get().ifPresent(e -> service.getCliente(e.getId()).ifPresent(Menu::soutClientes));
                 case 3 -> service.serviceCliente().create();
                 case 4 -> service.serviceCliente().delete();
+                case 5 -> service.serviceCliente().atualizarNomeCliente();
+
             }
             System.out.println(menu);
             opcao = sc.scInt("Digite uma opcao: ");

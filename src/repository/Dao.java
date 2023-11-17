@@ -13,4 +13,6 @@ public interface Dao<T> {
     Optional<T> findById(Long id);
 
     Optional<T> get();
+
+    void atualizarNomeCliente();
 }
