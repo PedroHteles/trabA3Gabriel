@@ -7,9 +7,9 @@ public class Menu {
     public static void main(String[] args) {
         String menu =
                 "\n\n1. Listar clientes:\n"
-                        + "3. Buscar cliente por email:\n"
-                        + "4. criar cliente:\n"
-                        + "5. remover clinte:\n"
+                        + "2. Buscar cliente por email:\n"
+                        + "3. criar cliente:\n"
+                        + "4. remover clinte:\n"
                         + "0. Sair:\n\n";
 
         System.out.println(menu);

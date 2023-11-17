@@ -24,7 +24,6 @@ public class ConnectionFactory extends CustomScanner {
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
              Statement statement = connection.createStatement()) {
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + DATABASE_NAME);
-            System.out.println("Database 'a3' created or already exists.");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,7 +38,6 @@ public class ConnectionFactory extends CustomScanner {
                     + "email VARCHAR(255) NOT NULL)";
 
             statement.executeUpdate(createTableQuery);
-            System.out.println("Table 'clientes' created or already exists.");
 
         } catch (SQLException e) {
             e.printStackTrace();
