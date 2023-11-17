@@ -20,11 +20,8 @@ public class Menu {
 
         while (opcao != 0) {
             switch (opcao) {
-                case 1 -> {
-                    service.getClientes().forEach(Menu::soutClientes);
-                }
-                case 2 ->
-                        service.serviceCliente().get().ifPresent(e -> service.getCliente(e.getId()).ifPresent(Menu::soutClientes));
+                case 1 -> service.getClientes().forEach(Menu::soutClientes);
+                case 2 -> service.serviceCliente().get().ifPresent(e -> service.getCliente(e.getId()).ifPresent(Menu::soutClientes));
                 case 3 -> service.serviceCliente().create();
                 case 4 -> service.serviceCliente().delete();
                 case 5 -> service.serviceCliente().atualizarNomeCliente();
